@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import SectionLayout from '../../components/common/sectionLayout';
 const S = {};
 
 const Contacts = () => {
   return (
-    <div>contacts</div>
+    <SectionLayout sectionTitle="Contacts">
+    </SectionLayout>
   );
 }
 

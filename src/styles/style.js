@@ -6,10 +6,10 @@ const sizes = {
   smallMax: 576,
   medium: 769,
   mediumMax: 768,
-  large: 1025,
-  largeMax: 1024,
-  xlarge: 1441,
-  xlargeMax: 1440
+  large: 993,
+  largeMax: 992,
+  xlarge: 1201,
+  xlargeMax: 1200
 }
 
 export const mediaMin = (Object.keys(sizes)).reduce((acc, label) => {
@@ -30,6 +30,9 @@ export const mediaMax = (Object.keys(sizes)).reduce((acc, label) => {
   return acc;
 }, {});
 
+export const mainTheme = {
+  mainHover: '#d8d8d8',
+}
 const GlobalStyle = createGlobalStyle`
   ${modernNormalize}
   html {
@@ -37,11 +40,15 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: Interstate;
-    font-size: 16px;
-    color: #222222;
+    font-size: 14px;
+    line-height: 14pt;
+    color: #424242;
   }
   h1, h2, h3, h4, h5, h6 {
-    margin: 0;
+    clear: both;
+    color: #212121;
+    font-weight: 700;
+    font-style: normal;
   }
   input {
     border: 0px solid;
@@ -58,10 +65,17 @@ const GlobalStyle = createGlobalStyle`
     font-family: Arial;
   }
   a {
+    color: #222222;
     cursor: pointer;
     text-decoration: none;
     &:focus, &:hover, &:visited, &:link, &:active {
       text-decoration: none;
+    }
+  }
+  #root {
+    height: 1500px;
+    & > div:nth-of-type(1){
+      padding-top: 80px;
     }
   }
 `;
