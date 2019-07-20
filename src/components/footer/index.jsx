@@ -34,9 +34,9 @@ const Footer = () => {
     <S.Footer>
       <S.LinkWrapper>
         © Morphing Matter Lab,&nbsp;
-        <S.itemSiteLink href="https://www.cs.nctu.edu.tw/intro/organization/multimedia" target="_blank">Institute of Multimedia Engineering,&nbsp;</S.itemSiteLink>
-        <S.itemSiteLink href="https://www.cs.nctu.edu.tw/" target="_blank">School of Computer Science,&nbsp; </S.itemSiteLink>
-        <S.itemSiteLink href="https://www.nctu.edu.tw/" target="_blank">National Chiao Tung University</S.itemSiteLink>
+        <S.itemSiteLink href="https://www.cs.nctu.edu.tw/intro/organization/multimedia" target="_blank">Institute of Multimedia Engineering</S.itemSiteLink>,&nbsp;
+        <S.itemSiteLink href="https://www.cs.nctu.edu.tw/" target="_blank">School of Computer Science</S.itemSiteLink>,&nbsp;
+        <S.itemSiteLink href="https://www.nctu.edu.tw/" target="_blank">National Chiao Tung University</S.itemSiteLink>,&nbsp;
       </S.LinkWrapper>
     </S.Footer>
   );

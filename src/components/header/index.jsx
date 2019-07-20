@@ -63,6 +63,7 @@ S.Nav = styled('nav')`
     transition: max-height 0.4s ease-in;
     > ul {
       opacity: 1;
+      visibility: visible;
       transition: opacity 0.1s ease-in 0.3s;
     }
   }
@@ -75,6 +76,7 @@ S.Nav = styled('nav')`
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
     > ul {
       opacity: 0;
+      visibility: hidden;
     }
   `};
   
