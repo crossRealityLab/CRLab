@@ -32,6 +32,8 @@ export const mediaMax = (Object.keys(sizes)).reduce((acc, label) => {
 
 export const mainTheme = {
   mainHover: '#d8d8d8',
+  contentColor: '#424242',
+  tagColor: '#666666'
 }
 const GlobalStyle = createGlobalStyle`
   ${modernNormalize}
