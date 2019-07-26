@@ -9,6 +9,8 @@ import Projects from './page/projects';
 import Publictions from './page/publications';
 import Team from './page/team';
 
+import Detail from './page/Detail';
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,7 +20,7 @@ const App = () => {
         <Route path="/courses" component={Courses} />
         <Route path="/teams" component={Team} />
         <Route path="/publications" component={Publictions} />
-        <Route path="/projects" component={Projects} />
+        <Route path="/projects" component={Detail} />
         <Route path="/" component={Home} />
       </Switch>
       <Footer />
