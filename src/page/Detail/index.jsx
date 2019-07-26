@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 
 import ImgGallery from './ImgGallery';
+import TabsWithContent from './TabsWithContent';
 import { mediaMax } from '../../styles/style';
 import SectionLayout from '../../components/common/sectionLayout';
 
@@ -30,31 +31,6 @@ const TitleAndAuthors = styled.div`
   > div {
     font-size: 12pt;
     font-weight: 400;
-  }
-`;
-
-const Tabs = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-top: 10px;
-`;
-
-const TabItem = styled.div`
-  align-self: stretch;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 2px;
-  padding: 6px 10px;
-  font-size: 9pt;
-  font-weight: bold;
-  background: #eeeeee;
-  color: #000;
-  cursor: pointer;
-
-  &:last-child {
-    cursor: unset;
   }
 `;
 
@@ -99,6 +75,44 @@ const VideoContainer = styled.div`
     height: 100%;
   }
 `;
+
+const tabsConfig = [
+  {
+    tabContent: 'Publication',
+    clickable: true,
+    renderBottom: ({ title, doi, publication, acceptedYear }) => (
+      <TableContent>
+        <a href={doi}>
+          <span>
+            {publication}
+            {acceptedYear}
+          </span>{' '}
+          <span>{title}</span>
+        </a>
+      </TableContent>
+    )
+  },
+  {
+    tabContent: 'Press Inquiries',
+    clickable: false,
+    renderBottom: () => null
+  },
+  {
+    tabContent: (
+      <>
+        Share:
+        <ShareLink>
+          <FontAwesomeIcon icon={faTwitter} />
+        </ShareLink>
+        <ShareLink>
+          <FontAwesomeIcon icon={faFacebookSquare} />
+        </ShareLink>
+      </>
+    ),
+    clickable: false,
+    renderBottom: () => null
+  }
+];
 
 const mock = {
   title: 'Digital Fabrication of Soft Actuated Objects by Machine Knitting',
@@ -150,8 +164,6 @@ const getYoutubeVid = (link = '') => {
 };
 
 export default () => {
-  const [tableContentIdx, setTableContentIdx] = useState(-1);
-
   return (
     <SectionLayout>
       <ImgGallery imgs={mock.imgs} />
@@ -161,36 +173,7 @@ export default () => {
           <div>{mock.authors.join(', ')}</div>
         </TitleAndAuthors>
 
-        <Tabs>
-          <TabItem onClick={() => setTableContentIdx(i => (i === 0 ? -1 : 0))}>
-            Publication
-          </TabItem>
-          <TabItem>Press Inquiries</TabItem>
-          <TabItem>
-            Share:
-            <ShareLink>
-              <FontAwesomeIcon icon={faTwitter} />
-            </ShareLink>
-            <ShareLink>
-              <FontAwesomeIcon icon={faFacebookSquare} />
-            </ShareLink>
-          </TabItem>
-        </Tabs>
-        {tableContentIdx > -1 && (
-          <TableContent>
-            {tableContentIdx === 0 ? (
-              <a href={mock.doi}>
-                <span>
-                  {mock.publication}
-                  {mock.acceptedYear}
-                </span>{' '}
-                <span>{mock.title}</span>
-              </a>
-            ) : (
-              ''
-            )}
-          </TableContent>
-        )}
+        <TabsWithContent tabsConfig={tabsConfig} data={mock} />
 
         <h3>Abstract</h3>
         <p>{mock.abstract}</p>
