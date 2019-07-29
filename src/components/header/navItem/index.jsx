@@ -14,6 +14,7 @@ S.NavItem = styled('li')`
   align-items: center;
   padding: 10px;
   margin: 0 15px;
+  text-transform:capitalize;
   & > a:hover, & > a.active {
     color: ${props => props.theme.mainHover};
   } 

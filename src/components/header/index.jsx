@@ -117,7 +117,7 @@ const Header = () => {
   },[])
 
   const renderNavItem = () => {
-    const item_array = ['Projects', 'Publications', 'Teams', 'Courses', 'Contacts'];
+    const item_array = ['projects', 'publications', 'teams', 'courses', 'contacts'];
     let navItems = item_array.map((item, index) => {
       return <NavItem key={index} navItemName={item} />
     })
