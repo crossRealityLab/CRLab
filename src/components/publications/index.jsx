@@ -15,6 +15,7 @@ const Publications = React.memo(() => {
                 abstract={item.abstract}
                 acceptedYear={item.acceptedYear}
                 publication={item.publication}
+                uuid={item.uuid}
               />
     })
   },[data])

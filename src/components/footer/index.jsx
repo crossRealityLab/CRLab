@@ -19,8 +19,8 @@ S.LinkWrapper = styled(SectionLayout)`
     content: '';
     width: calc(100% - 30px);;
     position: absolute;
-    height: 1px;
-    background-color: rgb(211, 211, 211);
+    height: 100%;
+    border-top: thin solid rgb(211, 211, 211);
   }
 `;
 S.itemSiteLink = styled('a')`

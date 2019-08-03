@@ -108,7 +108,7 @@ S.IconLinkList = styled('div')`
   font-size: 12px;
 `;
 
-const PublicationItem = React.memo(({ imgSrc, pdfSrc, doiSrc, projTitle, authors, abstract, acceptedYear, publication }) => {
+const PublicationItem = React.memo(({ imgSrc, pdfSrc, doiSrc, projTitle, authors, abstract, acceptedYear, publication, uuid }) => {
   const { ref, isComponentVisible, toggleVisible } = useComponentVisible(false);
   return (
     <S.PublicationItem>
@@ -119,7 +119,7 @@ const PublicationItem = React.memo(({ imgSrc, pdfSrc, doiSrc, projTitle, authors
         </S.ImgHoverBg>
       </S.PublicationImgWrapper>
       <S.ContentWrapper>
-        <Link to="/">{projTitle}</Link>
+        <Link to={`/projects/${uuid}`}>{projTitle}</Link>
         <S.Authors>{authors}</S.Authors>
         <S.Abstract ref={ref} className={isComponentVisible ? 'publication__abstract--open' : 'publication__abstract'} onClick={toggleVisible}>
           <FontAwesomeIcon icon={faChevronCircleDown} />

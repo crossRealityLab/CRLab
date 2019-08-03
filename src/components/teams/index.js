@@ -24,6 +24,7 @@ const Teams = React.memo((props) => {
                 email={item.email}
                 website={item.website}
                 publication={item.publication}
+                uuid={item.uuid}
                 {...props}
               />
     })

@@ -73,10 +73,10 @@ S.Website = styled('div')`
   }
 `;
 
-const Person = React.memo(({ imgSrc, name, title, focusTopic, email, website, ...props}) => {
+const Person = React.memo(({ imgSrc, name, title, focusTopic, email, website, uuid, ...props}) => {
   const personRoutLink = useMemo(() => {
-    return `${props.match.url}/${name.replace(/\s/g,'-')}`;
-  },[name, props.match]);
+    return `${props.match.url}/${name.toLowerCase().replace(/\s/g,'-')}/${uuid}`;
+  },[name, props.match, uuid]);
 
   return (
     <S.Person>
@@ -93,9 +93,12 @@ const Person = React.memo(({ imgSrc, name, title, focusTopic, email, website, ..
         <div>{title}</div>
         <div>{focusTopic}</div>
         <div>{email}</div>
-        <S.Website>
-          <a href={website}>Personal website</a>
-        </S.Website>
+        {
+          website && 
+            <S.Website>
+              <a href={website} target="_" rel="noopener noreferrer">Personal website</a>
+            </S.Website>
+        }
       </S.ContentWrapper>
     </S.Person>
   );
