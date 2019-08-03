@@ -5,7 +5,7 @@ import { faTwitter, faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
 
 import ImgGallery from './ImgGallery';
 import TabsWithContent from './TabsWithContent';
-import Loading from './Loading';
+import Loading from '../../styles/loader';
 
 import { mediaMax } from '../../styles/style';
 import SectionLayout from '../../components/common/sectionLayout';
