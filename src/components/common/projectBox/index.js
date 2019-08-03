@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mediaMin, mediaMax } from '../../../styles/style';
+import { mediaMin } from '../../../styles/style';
 import { Link } from 'react-router-dom';
-import testImage from '../../../images/test.png';
 
 const S = {};
-S.ProjectItem = styled('div')`
+S.ProjectBox = styled('div')`
   position: relative;
   margin: 2px;
   flex: 0 0;
-  flex-basis: calc(25% - 4px);
+  flex-basis: calc(33.3% - 4px);
   background-color: grey;
 
   :before {
@@ -17,9 +16,13 @@ S.ProjectItem = styled('div')`
     display: block;
     padding-top: 100%;
   }
+  ${mediaMin.small`
+    flex-basis: calc(25% - 4px);
+  `};
   ${mediaMin.medium`
     flex-basis: calc(20% - 4px);
   `};
+  
 `;
 S.ProjImg = styled('img')`
   width: 100%;
@@ -46,26 +49,29 @@ S.MaskBox = styled('div')`
   }
 `;
 S.MaskContentTitle = styled('div')`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   text-transform: capitalize;
+  ${mediaMin.medium`
+     font-size: 16px;
+  `};
 `;
 S.MaskContentYear = styled('div')`
   font-size: 12px;
 `;
 
-const ProjectItem = React.memo(({ imgSrc, projTitle, projYear }) => {
+const ProjectBox = React.memo(({ imgSrc, projTitle, projYear, uuid }) => {
   return (
-    <S.ProjectItem>
+    <S.ProjectBox>
       <S.ProjImg src={imgSrc} alt={projTitle}/>
-      <Link to="/">
+      <Link to={`/projects/${uuid}`}>
         <S.MaskBox>
             <S.MaskContentTitle>{projTitle}</S.MaskContentTitle>
             <S.MaskContentYear>{projYear}</S.MaskContentYear>
         </S.MaskBox>
       </Link>
-    </S.ProjectItem>
+    </S.ProjectBox>
   );
 });
 
-export default ProjectItem;
+export default ProjectBox;

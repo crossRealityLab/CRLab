@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import styled from 'styled-components';
 import useFetch from '../common/useFetch';
-import ProjectItem from './projectItem';
+import ProjectBox from '../common/projectBox'
 import TagList from './tagList';
 import _ from 'loadsh';
+import { datas as data } from '../../utils/mockData'
 
 const S = {};
 S.Projects = styled('div')`
@@ -14,27 +15,29 @@ S.Projects = styled('div')`
 
 const Projects = React.memo(() => {
   const [nowSelectedTag, setnowSelectedTag] = useState('all');
-  const {data, isLoading, error, abort} = useFetch('');
+  // const {data, isLoading, error, abort} = useFetch('');
 
   const renderProjectItem = useCallback(() => {
     if(nowSelectedTag === 'all'){
       return _.values(data)
               .map((item, index) => {
-                return <ProjectItem 
+                return <ProjectBox 
                           key={index}
                           imgSrc={item.cover[0].url}
                           projTitle={item.showTitle}
                           projYear={item.year}
+                          uuid={item.uuid}
                         />
               })
     }else {
       return _.filter(_.values(data), function(o) { return o.tags.includes(nowSelectedTag)})
               .map((item, index) => {
-                return <ProjectItem 
+                return <ProjectBox 
                           key={index}
                           imgSrc={item.cover[0].url}
                           projTitle={item.showTitle}
                           projYear={item.year}
+                          uuid={item.uuid}
                         />
               })
     }

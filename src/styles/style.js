@@ -47,7 +47,6 @@ const GlobalStyle = createGlobalStyle`
     color: #424242;
   }
   h1, h2, h3, h4, h5, h6 {
-    clear: both;
     color: #212121;
     font-weight: 700;
     font-style: normal;
@@ -75,7 +74,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   #root {
-    height: 1500px;
     & > div:nth-of-type(1){
       padding-top: 80px;
     }
