@@ -26,6 +26,9 @@ S.CollapseButton = styled('button')`
     position: absolute;
     transition: .2s;
     transition-timing-function: ease;
+    .nav-homePage:not(.scroll-ing):not(.collapse-ing) & {
+      background-color: white;
+    }
   }
   &:before {
     display: block;

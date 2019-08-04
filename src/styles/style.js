@@ -74,7 +74,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   #root {
-    & > div:nth-of-type(1){
+    & > div:nth-of-type(1):not(#homePage){
       padding-top: 80px;
     }
   }
