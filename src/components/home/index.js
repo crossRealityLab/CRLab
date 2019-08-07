@@ -10,7 +10,7 @@ import NewsBox from '../common/newsBox';
 import SectionLayout from '../../components/common/sectionLayout';
 import HomePageBanner from './homePageBanner';
 import VisionBox from './visionItem';
-import { labData as data_intro, datas as data_proj, news_data as data_news} from '../../utils/mockData';
+import { labData as data_intro, data_project as data_proj, news_data as data_news} from '../../utils/mockData';
 import _ from 'loadsh';
 
 const S = {};

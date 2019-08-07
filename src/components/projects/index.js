@@ -4,7 +4,7 @@ import useFetch from '../common/useFetch';
 import ProjectBox from '../common/projectBox'
 import TagList from './tagList';
 import _ from 'loadsh';
-import { datas as data } from '../../utils/mockData'
+import { data_project as data } from '../../utils/mockData'
 
 const S = {};
 S.Projects = styled('div')`

@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import _ from 'loadsh';
 import useFetch from '../common/useFetch';
 import PublicationItem from './publicationItem';
-
+import { data_project as data } from '../../utils/mockData'
 const Publications = React.memo(() => {
-  const { data, isLoading, error, abort } = useFetch('');
+  // const { data, isLoading, error, abort } = useFetch('');
   const renderItem = useCallback(() => {
     return _.values(data).map((item, index) => {
       return <PublicationItem 

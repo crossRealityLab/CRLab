@@ -6,7 +6,7 @@ import useData from '../../hooks/useData';
 import ImageBanner from './imageBanner';
 import _ from 'loadsh';
 import ProjectBox from '../common/projectBox';
-import { data, datas } from '../../utils/mockData';
+import { data_member as data ,data_project as datas } from '../../utils/mockData';
 
 const S = {};
 S.MemberDetail = styled.div`

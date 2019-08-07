@@ -10,6 +10,7 @@ import Publictions from './page/publications';
 import Team from './page/team';
 import Member from './page/member';
 import Detail from './page/Detail';
+import ErrorPage from './page/errorPage';
 
 const App = () => {
   return (
@@ -23,7 +24,8 @@ const App = () => {
         <Route path="/details/:uuid" component={Detail} />
         <Route path="/publications" component={Publictions} />
         <Route path="/projects" component={Projects} />
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
+        <Route component={ErrorPage} />
       </Switch>
       <Footer />
     </BrowserRouter>

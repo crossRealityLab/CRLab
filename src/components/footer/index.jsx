@@ -36,7 +36,7 @@ const Footer = () => {
         © Morphing Matter Lab,&nbsp;
         <S.itemSiteLink href="https://www.cs.nctu.edu.tw/intro/organization/multimedia" target="_blank">Institute of Multimedia Engineering</S.itemSiteLink>,&nbsp;
         <S.itemSiteLink href="https://www.cs.nctu.edu.tw/" target="_blank">School of Computer Science</S.itemSiteLink>,&nbsp;
-        <S.itemSiteLink href="https://www.nctu.edu.tw/" target="_blank">National Chiao Tung University</S.itemSiteLink>,&nbsp;
+        <S.itemSiteLink href="https://www.nctu.edu.tw/" target="_blank">National Chiao Tung University</S.itemSiteLink>
       </S.LinkWrapper>
     </S.Footer>
   );

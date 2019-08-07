@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import _ from 'loadsh';
 import useFetch from '../common/useFetch';
 import Person from './person';
-import { data } from '../../utils/mockData';
+import { data_team as data } from '../../utils/mockData';
 
 const S = {};
 S.Teams = styled('div')`
