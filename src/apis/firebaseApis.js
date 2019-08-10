@@ -15,12 +15,13 @@ export const getAll = (endpoint) => {
 };
 
 export const get = (endpoint, uuid) => {
+  const url = uuid ? `${endpoint}/${uuid}` : endpoint;
   return db
-    .ref(`${endpoint}/${uuid}`)
+    .ref(url)
     .once('value')
     .then(data => data.val())
     .catch(e => {
-      console.error(`GET ${endpoint} ${uuid} ERROR: ${e}`);
+      console.error(`GET ${url} ERROR: ${e}`);
       throw e;
     });
 };

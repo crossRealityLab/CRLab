@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import { get } from '../apis/firebaseApis';
 
 
-export default (endpoint = '', uuid = '') => {
+export default function(endpoint = '', uuid) {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
+
+  // 1: no uuid passed, for contact and labIntro APIs 
+  const argsLength = arguments.length;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +24,7 @@ export default (endpoint = '', uuid = '') => {
       }
     };
 
-    if(uuid) {
+    if(uuid || argsLength === 1) {
       fetchData();
     } else {
       setIsLoading(false);
