@@ -11,16 +11,16 @@ S.Footer = styled('footer')`
   
 `;
 S.LinkWrapper = styled(SectionLayout)`
-  display:flex;
+  flex-direction: row;
   flex-wrap: wrap;
   color: grey;
   position: relative;
   &:after {
     content: '';
-    width: calc(100% - 30px);;
+    width: calc(100% - 30px);
+    height: 1px;
+    background: rgb(211, 211, 211);
     position: absolute;
-    height: 100%;
-    border-top: thin solid rgb(211, 211, 211);
   }
 `;
 S.itemSiteLink = styled('a')`

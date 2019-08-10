@@ -6,13 +6,16 @@ const S = {};
 S.SectionLayout = styled('div')`
   max-width: 1020px;
   padding: 0;
-  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 
   ${mediaMax.mediumMax`
-    padding: 0 15px;  
+    padding: 0 15px;
   `};
-  ${mediaMin.mediumMax`
-    width: 750px;    
+  ${mediaMin.medium`
+    width: 750px;
+    margin: 0 auto;
   `};
   ${mediaMin.largeMax`
     width: 970px;
@@ -24,6 +27,7 @@ S.SectionLayout = styled('div')`
 S.SectionTitle = styled('h3')`
   font-size: 17px;
 `;
+
 const SectionLayout = ({ sectionTitle, ...props }) => {
 
   return (

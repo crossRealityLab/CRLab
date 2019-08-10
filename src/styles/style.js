@@ -74,6 +74,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
   #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     & > div:nth-of-type(1):not(#homePage){
       padding-top: 80px;
     }

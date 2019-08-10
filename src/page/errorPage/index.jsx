@@ -29,7 +29,7 @@ S.ErrorBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+  margin: auto;
   flex-direction: column;
 `;
 S.Error404 = styled.div`
