@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import styled from 'styled-components';
-import useFetch from '../common/useFetch';
 import ProjectBox from '../common/projectBox'
 import TagList from './tagList';
 import _ from 'loadsh';
@@ -15,7 +14,6 @@ S.Projects = styled('div')`
 
 const Projects = React.memo(() => {
   const [nowSelectedTag, setnowSelectedTag] = useState('all');
-  // const {data, isLoading, error, abort} = useFetch('');
 
   const renderProjectItem = useCallback(() => {
     if(nowSelectedTag === 'all'){

@@ -5,7 +5,7 @@ import testImage from '../../../images/test.png';
 
 const S = {};
 S.HomePageBanner = styled.div`
-  height: 400px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;

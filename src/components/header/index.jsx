@@ -4,8 +4,8 @@ import { NavLink, withRouter } from 'react-router-dom';
 import NavItem from './navItem';
 import CollapseButton from './collapseButton';
 import { mediaMax, mediaMin } from '../../styles/style';
-import useComponentVisible from '../common/useComponentVisible';
-import useWindowSize from '../common/useWindowSize';
+import useComponentVisible from '../../hooks/useComponentVisible';
+import useWindowSize from '../../hooks/useWindowSize';
 
 const S = {};
 

@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import _ from 'loadsh';
-import useFetch from '../common/useFetch';
 import Person from './person';
 import { data_team as data } from '../../utils/mockData';
 
@@ -12,7 +11,6 @@ S.Teams = styled('div')`
   margin: -12px;
 `;
 const Teams = React.memo((props) => {
-  // const { data, isLoading, error, abort } = useFetch('');
   const renderPerson = useCallback(() => {
     return _.values(data).map((item, index) => {
       return <Person 

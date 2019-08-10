@@ -45,7 +45,7 @@ const Contact = React.memo(() => {
       <S.ContactContent>
         <img src={data.banner} alt="contact" />
         {data.description.map((item, index) => 
-          <p>{item}</p>
+          <p key={index}>{item}</p>
         )}
       </S.ContactContent>
     </S.Contact>
