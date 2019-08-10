@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { mediaMin, mediaMax } from '../../../styles/style';
+import { mediaMax } from '../../../styles/style';
 import { Link } from 'react-router-dom';
 import useComponentVisible from '../../../hooks/useComponentVisible';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleDown, faFilePdf, faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import NoFoundImg from '../../../images/noFoundImg.png';
 
 const S = {};
 S.PublicationItem = styled('div')`
@@ -110,16 +111,17 @@ S.IconLinkList = styled('div')`
 
 const PublicationItem = React.memo(({ imgSrc, pdfSrc, doiSrc, projTitle, authors, abstract, acceptedYear, publication, uuid }) => {
   const { ref, isComponentVisible, toggleVisible } = useComponentVisible(false);
+  
   return (
     <S.PublicationItem>
       <S.PublicationImgWrapper>
-        <img src={imgSrc} alt="" />
+        <img src={!!imgSrc ? imgSrc[0].url : NoFoundImg} alt="" />
         <S.ImgHoverBg>
           {`${publication} ${acceptedYear}`}
         </S.ImgHoverBg>
       </S.PublicationImgWrapper>
       <S.ContentWrapper>
-        <Link to={`/projects/${uuid}`}>{projTitle}</Link>
+        <Link to={`/details/${uuid}`}>{projTitle}</Link>
         <S.Authors>{authors}</S.Authors>
         <S.Abstract ref={ref} className={isComponentVisible ? 'publication__abstract--open' : 'publication__abstract'} onClick={toggleVisible}>
           <FontAwesomeIcon icon={faChevronCircleDown} />
@@ -127,11 +129,11 @@ const PublicationItem = React.memo(({ imgSrc, pdfSrc, doiSrc, projTitle, authors
         </S.Abstract>
         <S.IconLinkList>
           <FontAwesomeIcon icon={faFilePdf} />
-          <a href={pdfSrc}>PDF</a>|
+          <a href={pdfSrc} rel="noopener noreferrer" target="_blank">PDF</a>|
           <FontAwesomeIcon icon={faLink} />
-          <a href={doiSrc}>DOI</a>|
+          <a href={doiSrc} rel="noopener noreferrer" target="_blank">DOI</a>|
           <FontAwesomeIcon icon={faExternalLinkAlt} />
-          <Link to="/">Detail</Link>
+          <Link to={`/details/${uuid}`}>Detail</Link>
         </S.IconLinkList>
       </S.ContentWrapper>
     </S.PublicationItem>

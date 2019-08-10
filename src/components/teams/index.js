@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import _ from 'loadsh';
 import Person from './person';
-import { data_team as data } from '../../utils/mockData';
+import useListData from '../../hooks/useListData';
+import NoFoundPerson from '../../images/noFoundImgPerson.png';
+import Loading from '../../styles/loader';
 
 const S = {};
 S.Teams = styled('div')`
@@ -10,15 +11,18 @@ S.Teams = styled('div')`
   flex-wrap: wrap;
   margin: -12px;
 `;
+
 const Teams = React.memo((props) => {
+  const { data, isLoading } = useListData('/members');
+
   const renderPerson = useCallback(() => {
-    return _.values(data).map((item, index) => {
+    return data.map((item, index) => {
       return <Person 
                 key={index}
-                imgSrc={item.avatar[0].url}
+                imgSrc={!!item.avatar ? item.avatar[0].url : NoFoundPerson}
                 name={item.fullName}
                 title={item.title}
-                focusTopic={item.focusOn.join(', ')}
+                focusTopic={item.focusOn && item.focusOn.join(', ')}
                 email={item.email}
                 website={item.website}
                 publication={item.publication}
@@ -28,6 +32,8 @@ const Teams = React.memo((props) => {
     })
   },[data]);
 
+  if(isLoading) return <Loading />;
+  if(!data) return;
   return (
     <S.Teams>
       {renderPerson()}

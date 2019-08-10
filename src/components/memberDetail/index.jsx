@@ -1,12 +1,13 @@
 import React, { useCallback }from 'react';
 import styled from 'styled-components';
-import { mediaMin } from '../../styles/style';
-import Loader from '../../styles/loader';
-import useData from '../../hooks/useData';
-import ImageBanner from './imageBanner';
 import _ from 'loadsh';
+import useListData from '../../hooks/useListData';
+import useData from '../../hooks/useData';
+import { mediaMin } from '../../styles/style';
+import Loading from '../../styles/loader';
+import ImageBanner from './imageBanner';
 import ProjectBox from '../common/projectBox';
-import { data_member as data ,data_project as datas } from '../../utils/mockData';
+import NoFoundPerson from '../../images/noFoundImgPerson.png';
 
 const S = {};
 S.MemberDetail = styled.div`
@@ -37,11 +38,9 @@ S.ProjList = styled('div')`
 
 const MemberDetail = ({ match }) => {
   const { uuid } = match.params;
-  // const { data, isLoading } = useData('/projects', uuid);
-  
-  // if (isLoading || !data) {
-  //   return <Loader />;
-  // }
+  const { data, isLoading } = useData('/members', uuid);
+  const { data: proj_data, isLoading: proj_isLoading } = useListData('/projects');
+
   const renderPublicationList = useCallback((input_data) => {
     return _.orderBy(input_data, ["year", "conference"], ["desc", "asc"]).map((item, index) => {
       return  <S.List key={index}>
@@ -56,7 +55,7 @@ const MemberDetail = ({ match }) => {
   },[data]);
 
   const renderProject = useCallback(() => {
-    return  _.filter(_.values(datas), function(o) { return o.authors.includes(data.fullName)})
+    return  _.filter(proj_data, function(o) { return o.authors.includes(data.fullName)})
             .map((item, index) => {
               return  <ProjectBox 
                         key={index}
@@ -66,15 +65,17 @@ const MemberDetail = ({ match }) => {
                         uuid={item.uuid}
                       />
             })
-  },[datas, data])
+  },[proj_data, data])
+
+  if(isLoading || proj_isLoading || !data || !proj_data) return <Loading />;
 
   return (
     <S.MemberDetail>
       <ImageBanner 
-        imgSrc={data.avatar[0].url}
+        imgSrc={!!data.avatar ? data.avatar[0].url : NoFoundPerson}
         name={data.fullName}
         title={data.title}
-        focusOn={data.focusOn.join(', ')}
+        focusOn={data.focusOn && data.focusOn.join(', ')}
         email={data.email}
         website={data.website}
       />

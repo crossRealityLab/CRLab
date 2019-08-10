@@ -64,7 +64,7 @@ const ProjectBox = React.memo(({ imgSrc, projTitle, projYear, uuid }) => {
   return (
     <S.ProjectBox>
       <S.ProjImg src={imgSrc} alt={projTitle}/>
-      <Link to={`/projects/${uuid}`}>
+      <Link to={`/details/${uuid}`}>
         <S.MaskBox>
             <S.MaskContentTitle>{projTitle}</S.MaskContentTitle>
             <S.MaskContentYear>{projYear}</S.MaskContentYear>

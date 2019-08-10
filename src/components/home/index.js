@@ -1,6 +1,6 @@
-import React, { useCallback }from 'react';
+import React, { useCallback, useEffect }from 'react';
 import styled from 'styled-components';
-import { mediaMin, mediaMax } from '../../styles/style';
+import { mediaMax } from '../../styles/style';
 import useData from '../../hooks/useData';
 import useListData from '../../hooks/useListData';
 import Loader from '../../styles/loader';
@@ -33,9 +33,9 @@ S.Vision = styled('div')`
   `};
 `;
 const HomePage = props => {
-  // const { data: data_proj, isLoading: isLoading__proj } = useListData();
-  // const { data: data_news, isLoading: isLoading_news } = useListData();
-  // const { data: data_intro, isLoading: isLoading_intro } = useData();
+  // const { data: data_proj, isLoading: isLoading__proj } = useListData('/projects');
+  // const { data: data_news, isLoading: isLoading_news } = useListData('/news');
+  // const { data: data_intro, isLoading: isLoading_intro } = useData('/labIntro');
 
   const renderProjects = useCallback(() => {
       return _.values(data_proj)
