@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect }from 'react';
+import React, { useCallback }from 'react';
 import styled from 'styled-components';
 import { mediaMax } from '../../styles/style';
 import useData from '../../hooks/useData';
@@ -10,8 +10,7 @@ import NewsBox from '../common/newsBox';
 import SectionLayout from '../../components/common/sectionLayout';
 import HomePageBanner from './homePageBanner';
 import VisionBox from './visionItem';
-import { labData as data_intro, data_project as data_proj, news_data as data_news} from '../../utils/mockData';
-import _ from 'loadsh';
+import NoFoundImg from '../../images/noFoundImg.png';
 
 const S = {};
 S.HomePage =styled.div`
@@ -32,17 +31,17 @@ S.Vision = styled('div')`
     flex-direction: column;
   `};
 `;
-const HomePage = props => {
-  // const { data: data_proj, isLoading: isLoading__proj } = useListData('/projects');
-  // const { data: data_news, isLoading: isLoading_news } = useListData('/news');
-  // const { data: data_intro, isLoading: isLoading_intro } = useData('/labIntro');
 
+const HomePage = props => {
+  const { data: data_proj, isLoading: isLoading__proj } = useListData('/projects');
+  const { data: data_news, isLoading: isLoading_news } = useListData('/news');
+  const { data: data_intro, isLoading: isLoading_intro } = useData('/labIntro');
+  
   const renderProjects = useCallback(() => {
-      return _.values(data_proj)
-              .map((item, index) => {
+      return data_proj.map((item, index) => {
                 return <ProjectBox 
                           key={index}
-                          imgSrc={item.cover[0].url}
+                          imgSrc={!!item.cover ? item.cover[0].url : NoFoundImg}
                           projTitle={item.showTitle}
                           projYear={item.year}
                           uuid={item.uuid}
@@ -51,8 +50,7 @@ const HomePage = props => {
   },[data_proj]);
 
   const renderNews = useCallback(() => {
-    return _.values(data_news)
-            .sort(function(a,b) {
+    return data_news.sort(function(a,b) {
               return new Date(b.date) - new Date(a.date); 
             }).map((item, index) => {
               return <NewsBox 
@@ -64,8 +62,8 @@ const HomePage = props => {
             })
   },[data_news])
 
-  // if (isLoading__proj || isLoading_news || isLoading_intro) return <Loader />;
-  // if(!data_proj || !data_news || !data_intro) return null;
+  if (isLoading__proj || isLoading_news || isLoading_intro) return <Loader />;
+  if(!data_proj || !data_news || !data_intro) return null;
  
   return (
     <S.HomePage id="homePage">
@@ -78,7 +76,7 @@ const HomePage = props => {
         <S.ProjList>{renderProjects()}</S.ProjList>
         <SubSectionTitle>Vision</SubSectionTitle>
         <S.Vision>
-          {data_intro.vision.map((item, index) => (
+          {data_intro.visions.map((item, index) => (
             <VisionBox key={index} visionDescription={item} />
           ))}
         </S.Vision>

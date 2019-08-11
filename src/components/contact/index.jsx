@@ -4,7 +4,6 @@ import { mediaMax } from '../../styles/style';
 import Loader  from '../../styles/loader';
 import useData from '../../hooks/useData';
 import ContactCard from './contactCard';
-import { contactData as data } from '../../utils/mockData';
 
 const S = {};
 S.Contact = styled.div`
@@ -30,9 +29,10 @@ S.ContactContent = styled.div`
 `;
 
 const Contact = React.memo(() => {
-  // const { data, isLoading } = useData();
-  // if (isLoading) return <Loader />
-  // if (!data) return null;
+  const { data, isLoading } = useData('/contact');
+
+  if (isLoading) return <Loader />
+  if (!data) return null;
   return (
     <S.Contact>
       <ContactCard 
@@ -43,10 +43,11 @@ const Contact = React.memo(() => {
         lab={data.lab}
       />
       <S.ContactContent>
-        <img src={data.banner} alt="contact" />
-        {data.description.map((item, index) => 
+        {!!data.banner && <img src={data.banner[0].url} alt="contact"/>}
+        {/* {data.description.map((item, index) => 
           <p key={index}>{item}</p>
-        )}
+        )} */}
+        <p>{data.description}</p>
       </S.ContactContent>
     </S.Contact>
   );

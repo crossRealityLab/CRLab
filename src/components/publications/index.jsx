@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import _ from 'loadsh';
 import PublicationItem from './publicationItem';
 import useListData from '../../hooks/useListData';
@@ -6,9 +6,6 @@ import Loading from '../../styles/loader';
 
 const Publications = React.memo(() => {
   const { data, isLoading } = useListData('/projects');
-  useEffect(() => {
-    console.log(data)
-  })
   const renderItem = useCallback(() => {
     return _.filter(data, 'publicationOn').map((item, index) => {
       return <PublicationItem 
