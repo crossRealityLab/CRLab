@@ -1,7 +1,7 @@
-import React, { useCallback }from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { mediaMin, mediaMax } from '../../../styles/style';
-import testImage from '../../../images/test.png';
+import { mediaMax } from '../../../styles/style';
+import HomeImage from '../../../images/homePageBanner.png';
 
 const S = {};
 S.HomePageBanner = styled.div`
@@ -11,7 +11,7 @@ S.HomePageBanner = styled.div`
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  background-image: url(${testImage});
+  background-image: url(${HomeImage});
   background-size: cover;
   background-position: center;
 `;
@@ -25,7 +25,7 @@ S.Title = styled.h1`
   `};
 `;
 S.SubTitle = styled.h3`
-  margin: 48px 0 10px 0;
+  margin: 48px 60px 10px 60px;
   font-size: 17px;
   line-height: 24px;
   color: white;

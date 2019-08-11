@@ -99,7 +99,7 @@ S.IconLinkList = styled('div')`
   & > svg:nth-child(n+2) {
     margin-left: 5px;
   }
-  & > a {
+  & > a, & > div {
     margin: 0 5px;
     color: ${props => props.theme.tagColor};
   }
@@ -129,9 +129,16 @@ const PublicationItem = React.memo(({ imgSrc, pdfSrc, doiSrc, projTitle, authors
         </S.Abstract>
         <S.IconLinkList>
           <FontAwesomeIcon icon={faFilePdf} />
-          <a href={pdfSrc} rel="noopener noreferrer" target="_blank">PDF</a>|
+          {!!pdfSrc
+            ? <><a href={pdfSrc} rel="noopener noreferrer" target="_blank">PDF</a>|</>
+            : <><div>PDF</div>|</>
+          }
           <FontAwesomeIcon icon={faLink} />
-          <a href={doiSrc} rel="noopener noreferrer" target="_blank">DOI</a>|
+          {
+            !!doiSrc
+            ? <><a href={doiSrc} rel="noopener noreferrer" target="_blank">DOI</a>|</>
+            : <><div>DOI</div></>
+          }
           <FontAwesomeIcon icon={faExternalLinkAlt} />
           <Link to={`/details/${uuid}`}>Detail</Link>
         </S.IconLinkList>

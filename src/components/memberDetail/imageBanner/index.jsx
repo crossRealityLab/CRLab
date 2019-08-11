@@ -19,8 +19,10 @@ S.ImageBanner = styled.div`
     padding: 0 30px;
     justify-content: space-between;
   `};
-  
-  /* justify-content: space-between; */
+  ${mediaMax.smallMax`
+    padding: 0 15px 0 0;
+    height: 175px;
+  `};
 `;
 S.BackgroundCover = styled.div`
   top: 0;
@@ -44,6 +46,9 @@ S.ImgWrapper = styled.div`
   `};
   ${mediaMax.mediumMax`
     flex: 0.7;  
+  `};
+  ${mediaMax.smallMax`
+    flex: 0.85;  
   `};
   
 `;

@@ -1,6 +1,6 @@
-import React, { useCallback }from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { mediaMin, mediaMax } from '../../../styles/style';
+import { mediaMax } from '../../../styles/style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 

@@ -45,7 +45,7 @@ const Projects = React.memo(() => {
 
   const getTags = useMemo(() => {
     let all_tag = [nowSelectedTag];
-    _.values(data).forEach((item, index) => {
+    data.forEach((item, index) => {
       all_tag = _.union(all_tag, item.tags);
     })
     return all_tag;

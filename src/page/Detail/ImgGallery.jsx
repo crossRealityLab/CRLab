@@ -69,6 +69,7 @@ const Caption = styled.div`
     position: absolute;
     bottom: 30px;
     left: 25px;
+    word-break: break-word;
   }
 
   ${mediaMax.mediumMax`

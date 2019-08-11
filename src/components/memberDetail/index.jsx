@@ -55,16 +55,22 @@ const MemberDetail = ({ match }) => {
   },[data]);
 
   const renderProject = useCallback(() => {
-    return  _.filter(proj_data, function(o) { return o.authors.includes(data.fullName)})
-            .map((item, index) => {
-              return  <ProjectBox 
-                        key={index}
-                        imgSrc={item.cover[0].url}
-                        projTitle={item.showTitle}
-                        projYear={item.year}
-                        uuid={item.uuid}
-                      />
-            })
+    const map_proj_array = _.filter(proj_data, function(o) { return o.authors.includes(data.fullName)});
+    const map_proj_data = map_proj_array.map((item, index) => (
+        <ProjectBox 
+          key={index}
+          imgSrc={item.cover[0].url}
+          projTitle={item.showTitle}
+          projYear={item.year}
+          uuid={item.uuid}
+        />));
+    return !!map_proj_array.length &&
+      <>
+        <S.SectionTitle>Projects</S.SectionTitle>
+        <S.ProjList>
+          {map_proj_data}
+        </S.ProjList>
+      </>
   },[proj_data, data])
 
   if(isLoading || proj_isLoading || !data || !proj_data) return <Loading />;
@@ -79,16 +85,26 @@ const MemberDetail = ({ match }) => {
         email={data.email}
         website={data.website}
       />
-      <S.SectionTitle>About</S.SectionTitle>
-      <div>{data.about}</div>
-      <S.SectionTitle>Publications</S.SectionTitle>
-      <ul>{renderPublicationList(data.publications)}</ul>
-      <S.SectionTitle>Awards</S.SectionTitle>
-      <ul>{renderPublicationList(data.awards)}</ul>
-      <S.SectionTitle>Projects</S.SectionTitle>
-      <S.ProjList>
-        {renderProject()}
-      </S.ProjList>
+      {!!data.about && 
+        <>
+          <S.SectionTitle>About</S.SectionTitle>
+          <div>{data.about}</div>
+        </>
+      }
+      {!!data.publications && !!data.publications.length &&
+        <>
+          <S.SectionTitle>Publications</S.SectionTitle>
+          <ul>{renderPublicationList(data.publications)}</ul>
+        </>
+      }
+      {
+        !!data.awards && !!data.awards.length &&
+        <>
+          <S.SectionTitle>Awards</S.SectionTitle>
+          <ul>{renderPublicationList(data.awards)}</ul>
+        </>
+      }
+      {renderProject()}
     </S.MemberDetail>
   );
 }
