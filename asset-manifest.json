@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/CRLab/static/js/main.d9ad33b8.chunk.js",
-    "main.js.map": "/CRLab/static/js/main.d9ad33b8.chunk.js.map",
+    "main.js": "/CRLab/static/js/main.ce919fb0.chunk.js",
+    "main.js.map": "/CRLab/static/js/main.ce919fb0.chunk.js.map",
     "runtime~main.js": "/CRLab/static/js/runtime~main.0cd0de30.js",
     "runtime~main.js.map": "/CRLab/static/js/runtime~main.0cd0de30.js.map",
-    "static/js/2.b181660b.chunk.js": "/CRLab/static/js/2.b181660b.chunk.js",
-    "static/js/2.b181660b.chunk.js.map": "/CRLab/static/js/2.b181660b.chunk.js.map",
+    "static/js/2.05e3e8d7.chunk.js": "/CRLab/static/js/2.05e3e8d7.chunk.js",
+    "static/js/2.05e3e8d7.chunk.js.map": "/CRLab/static/js/2.05e3e8d7.chunk.js.map",
     "index.html": "/CRLab/index.html",
-    "precache-manifest.cbcfb2d5eda3f967faa7ca193fd9c655.js": "/CRLab/precache-manifest.cbcfb2d5eda3f967faa7ca193fd9c655.js",
+    "precache-manifest.60432b3470f248f5290bdab7cdaf747f.js": "/CRLab/precache-manifest.60432b3470f248f5290bdab7cdaf747f.js",
     "service-worker.js": "/CRLab/service-worker.js",
-    "static/media/noFoundImgPerson.png": "/CRLab/static/media/noFoundImgPerson.b6681619.png",
-    "static/media/test.png": "/CRLab/static/media/test.030b788c.png"
+    "static/media/homePageBanner.png": "/CRLab/static/media/homePageBanner.b5da470f.png",
+    "static/media/noFoundImgPerson.png": "/CRLab/static/media/noFoundImgPerson.b6681619.png"
   }
 }
