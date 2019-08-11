@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch, HashRouter } from 'react-router-dom';
 import ScrollToTop from './hooks/useScrollTop';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -15,7 +15,7 @@ import ErrorPage from './page/errorPage';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header />
       <ScrollToTop />
         <Switch>
@@ -30,7 +30,7 @@ const App = () => {
           <Route component={ErrorPage} />
         </Switch>
         <Footer />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
